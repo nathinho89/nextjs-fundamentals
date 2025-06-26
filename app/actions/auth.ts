@@ -162,7 +162,7 @@ export const signOut = async(): Promise<void> => {
     await deleteSession()
   } catch(e) {
     console.error('Sign out error', e)
-    throw e
+    throw new Error('Failed to sign out')
   } finally {
     redirect('/signin')
   }
