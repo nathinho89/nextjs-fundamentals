@@ -51,3 +51,21 @@ export const getIssues = async () => {
     throw new Error('Failed to fetch issues')
   }
 }
+
+export const getIssue = async (id: number) => {
+  try {
+    const issue = await db.query.issues.findFirst({
+      where: eq(issues.id, id),
+      with: { user: true },
+    })
+
+    return issue
+  } catch (e) {
+    console.error('Error fetching issue', e)
+    return {
+      success: false,
+      message: 'An error occurred while fetching the issue',
+      error: 'Failed to fetch issue',
+    }
+  }
+}

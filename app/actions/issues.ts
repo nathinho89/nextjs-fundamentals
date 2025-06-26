@@ -77,10 +77,10 @@ export const createIssue = async (data: IssueData): Promise<ActionResponse> => {
   }
 }
 
-export async function updateIssue(
+export const updateIssue = async (
   id: number,
   data: Partial<IssueData>
-): Promise<ActionResponse> {
+): Promise<ActionResponse> => {
   try {
     // Security check - ensure user is authenticated
     const user = await getCurrentUser()
@@ -131,7 +131,7 @@ export async function updateIssue(
   }
 }
 
-export async function deleteIssue(id: number) {
+export const deleteIssue = async (id: number) => {
   try {
     // Security check - ensure user is authenticated
     const user = await getCurrentUser()
